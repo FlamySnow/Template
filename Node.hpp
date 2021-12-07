@@ -12,12 +12,11 @@ public:
     //конструкторы
     node(): left(nullptr), right(nullptr) {};
     explicit node(std::pair<Key, Value> info): data(info), left(nullptr), right(nullptr) {};
-//деструктор
-    ~node();
     //методы
     node<Key, Value>* insert (node<Key, Value>* pNode, std::pair<Key, Value> info);
     void traverse (const node<Key, Value>* pNode) const;
     node<Key, Value>* search(node<Key, Value>* pNode, Key k);
+    void erase(node<Key, Value>* pNode);
 };
 
 template<class Key, class Value>
@@ -50,13 +49,12 @@ node<Key, Value>* node<Key, Value>::search(node<Key, Value> *pNode, Key k) {
 }
 
 template<class Key, class Value>
-node<Key, Value>::~node() {
-    if (right->right || right->left)
-        ~right;
-    delete right;
-    if (left->right || left->left)
-        ~left;
-    delete left;
+void node<Key, Value>::erase(node<Key, Value> *pNode) {
+    if (!pNode)
+        return;
+    erase(pNode->right);
+    erase(pNode->left);
+    delete pNode;
 }
 
 

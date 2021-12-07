@@ -11,7 +11,7 @@ class BST {
     node<Key, Value>* root;
 public:
     BST(): root(nullptr) {};
-    ~BST() = default;;
+    ~BST() {root->erase(root);};
     node<Key, Value>* insert (std::pair<Key, Value> info);
     const Value& getValue (const Key& k) const;
     node<Key, Value>* search (const Key& k);
