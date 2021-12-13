@@ -5,4 +5,4 @@ set(CMAKE_CXX_STANDARD 23)
 
 #add_library(template map.h map.cpp)
 
-add_executable(template Node.cpp Node.hpp BST.cpp BST.h)
+add_executable(template Node.cpp Node.hpp BST.cpp BST.h Map.cpp Map.h)
